@@ -6,7 +6,7 @@ export default class Form_Events {
 
   initChildrenData(){
     let $childrenData = $("div.childrenData");  // Children data to show later, depending on "select#childGroupSelectUnder18"
-    //$("div.childrenData").remove();//Remove all existing children data inputs
+    $("div.childrenData").remove();//Remove all existing children data inputs
     let $selectedChildNumber;  // Children number selected, default = 0.
     // Add event listener to get selected number of childrens.
     $(document).ready(
