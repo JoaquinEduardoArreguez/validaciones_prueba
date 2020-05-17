@@ -1,17 +1,50 @@
 export default class Form_Events {
   constructor() {
     this.initPrevNextButtons();
+    this.initChildrenData();
+  }
+
+  initChildrenData(){
+    let $childrenData = $("div.childrenData");  // Children data to show later, depending on "select#childGroupSelectUnder18"
+    //$("div.childrenData").remove();//Remove all existing children data inputs
+    let $selectedChildNumber;  // Children number selected, default = 0.
+    // Add event listener to get selected number of childrens.
+    $(document).ready(
+
+
+      function(){
+
+        $("select#childGroupSelectUnder18").change(
+          function(){
+
+            $selectedChildNumber = $(this).children("option:selected").val();
+            alert('HAVE '+ $selectedChildNumber +" CHILDREN");
+
+            $("div.childrenData").remove();//Remove all existing children data inputs
+
+            for(let i=0;i<$selectedChildNumber;i++){
+              $childrenData.clone(true).appendTo("div.childrenDataContainer");
+            }
+          }
+        );
+      }
+    );       
+
   }
 
   initPrevNextButtons() {
-    let $prevButton = $(".js-previous");
-    let $nextButton = $(".js-next");
-    let $sendButton = $(".js-sendForm");
+    const $prevButton = $(".js-previous");
+    const $nextButton = $(".js-next");
+    const $finishButton = $(".js-finish");
+
+    //let $childGroupSelectUnder18 = $("select#childGroupSelectUnder18");
 
     $prevButton.click(this.previousAction.bind(this));
     $nextButton.click(this.nextAction.bind(this));
-    $sendButton.click(this.preventDefault);
+    $finishButton.click(this.preventDefault);
   }
+
+  
 
   initSendFormEvent(callback) {
     let $sendForm = $(".js-sendForm");
