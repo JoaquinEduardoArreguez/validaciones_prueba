@@ -6,9 +6,11 @@ export default class Form_Events {
   initPrevNextButtons() {
     let $prevButton = $(".js-previous");
     let $nextButton = $(".js-next");
+    let $sendButton = $(".js-sendForm");
 
     $prevButton.click(this.previousAction.bind(this));
     $nextButton.click(this.nextAction.bind(this));
+    $sendButton.click(this.preventDefault);
   }
 
   initSendFormEvent(callback) {
@@ -85,7 +87,14 @@ export default class Form_Events {
 
   // 3) ¿Se puede evitar repetir mismas líneas que en previousAction?
   // input : event , direction : dictates if the change is previous or next ('prev' or ''/'next' ).
+
+  preventDefault(event){
+    event.preventDefault();
+  }
+
   changeAction(evt, direction = "next") {
+    this.preventDefault(evt);
+
     let $current = $(evt.currentTarget);
     let $formStep = $current.parents(".form-step");
 
