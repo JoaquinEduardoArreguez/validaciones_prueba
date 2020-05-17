@@ -1,36 +1,46 @@
 export default class Form_Events {
   constructor() {
     this.initPrevNextButtons();
-    this.initChildrenData();
+    //this.initChildrenData();            111111111111111111111111111
   }
 
-  initChildrenData(){
-    let $childrenData = $("div.childrenData");  // Children data to show later, depending on "select#childGroupSelectUnder18"
-    $("div.childrenData").remove();//Remove all existing children data inputs
-    let $selectedChildNumber;  // Children number selected, default = 0.
-    // Add event listener to get selected number of childrens.
-    $(document).ready(
+  // initChildrenData(){            11111111111111111111111111111111
+  //   let $childrenData = $("div.childrenData").clone(true);  // Children data to show later, depending on "select#childGroupSelectUnder18"
+  //   $("div.childrenData").remove();//Remove all existing children data inputs
+  //   let $selectedChildNumber;  // Children number selected, default = 0.
+  //   // Add event listener to get selected number of childrens.
+  //   $(document).ready(
 
 
-      function(){
+  //     function(){
 
-        $("select#childGroupSelectUnder18").change(
-          function(){
+  //       $("select#childGroupSelectUnder18").change(
+  //         function(){
 
-            $selectedChildNumber = $(this).children("option:selected").val();
-            alert('HAVE '+ $selectedChildNumber +" CHILDREN");
+  //           $selectedChildNumber = $(this).children("option:selected").val();
+  //           //alert('HAVE '+ $selectedChildNumber +" CHILDREN");
 
-            $("div.childrenData").remove();//Remove all existing children data inputs
+  //           $("div.childrenData").remove();//Remove all existing children data inputs
 
-            for(let i=0;i<$selectedChildNumber;i++){
-              $childrenData.clone(true).appendTo("div.childrenDataContainer");
-            }
-          }
-        );
-      }
-    );       
+  //           for(let i=0;i<$selectedChildNumber;i++){
 
-  }
+  //             let auxChildrenData = $childrenData.clone(true);
+
+  //             auxChildrenData.attr('name','childrenData'+i).attr('id','childrenData'+i);
+
+  //             auxChildrenData.find('label.input-group-text').text('#'+(i+1));
+
+
+
+  //             auxChildrenData.appendTo("div.childrenDataContainer");
+  //             //$childrenData.clone(true).appendTo("div.childrenDataContainer");
+  //           }
+  //         }
+  //       );
+  //     }
+  //   );       
+
+  // }
 
   initPrevNextButtons() {
     const $prevButton = $(".js-previous");

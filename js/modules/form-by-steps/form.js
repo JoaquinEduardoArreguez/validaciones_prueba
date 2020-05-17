@@ -1,5 +1,6 @@
 import FormEvents from "./form_events.js";
 import FormValidation from "./form_validation.js";
+//import FormScript from "../../script";
 
 export default class Form {
   constructor() {
