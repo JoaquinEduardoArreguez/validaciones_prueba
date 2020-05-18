@@ -37,16 +37,38 @@ export default class Form {
       form.classList.add("was-validated");
     });
 
-    let $validationWarning = `<div id="validationWarningAlert" class="alert alert-warning" role="alert">
+    // let $validationWarning = `<div id="validationWarningAlert" class="alert alert-warning" role="alert">
+    //   Check data highlighted in <strong class="text-danger">red</strong>.
+    // </div>`;
+
+    // if (this.invalidInputsMessageShow == false) {
+    //   $("#finalDialog").append($validationWarning);
+    //   this.invalidInputsMessageShow = true;
+    // }
+
+    let $validationWarningString = `<div id="validationWarningAlert" class="alert alert-warning" role="alert">
       Check data highlighted in <strong class="text-danger">red</strong>.
     </div>`;
 
-    if (this.invalidInputsMessageShow == false) {
-      $("#finalDialog").append($validationWarning);
-      this.invalidInputsMessageShow = true;
-    }
-
     if (invalidInputsNumber === 0) {
+
+      $('#validationWarningAlert').remove();  //Remove if previous existing.
+      
+      $("#finalDialog").append($validationWarningString);
+
+      $('#validationWarningAlert').removeClass('alert-warning').addClass('alert-success').text('Information complete, ready to send!');
+
+      let delayInMilliseconds = 1000; //1 second
+
+setTimeout(function() {}, delayInMilliseconds);
+
+      
+/*
+      if (this.invalidInputsMessageShow == true) {
+        $("#finalDialog").append($validationWarning);
+        this.invalidInputsMessageShow = true;
+      }
+      */
 
       //$('#validationWarningAlert').removeClass('alert-warning').addClass('alert-success').text('Sent! Press F12 to see response.');
 
@@ -76,6 +98,13 @@ export default class Form {
           }
           ));
       });
+    }else{
+      $('#validationWarningAlert').remove();  //Remove if previous existing.
+      //$('#validationWarningAlert').removeClass('alert-success').addClass('alert-warning').text('Information complete, ready to send!');
+      $("#finalDialog").append($validationWarningString);
     }
+
+
+
   }
 }
