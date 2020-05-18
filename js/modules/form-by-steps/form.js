@@ -23,6 +23,8 @@ export default class Form {
     // la API retorna un JSON con el id del usuario creado y la info guardada.
     // Para mas info ver en https://reqres.in
 
+    //$('#validationWarningAlert').remove();  //Remove if previous existing.
+
     // Get all forms to check validation. Cant send form if not validated.
     let forms = document.getElementsByClassName("needs-validation");
     let invalidInputsNumber = 0;
