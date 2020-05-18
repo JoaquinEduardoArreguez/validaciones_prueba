@@ -3,7 +3,7 @@ import Form from "./modules/form-by-steps/form.js";
 class Main extends Form {
   constructor() {
     super();
-    console.log("change childs init");
+    console.log("change child number init");
     this.initChildrenData();
   }
 

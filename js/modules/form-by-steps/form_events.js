@@ -1,6 +1,8 @@
 export default class Form_Events {
   constructor() {
     this.initPrevNextButtons();
+    console.log('form events init');
+    
   }
 
   initPrevNextButtons() {
@@ -43,10 +45,11 @@ export default class Form_Events {
 
   preventDefault(event) {
     event.preventDefault();
+    //debugger;
   }
 
   changeAction(evt, direction = "next") {
-    this.preventDefault(evt);
+    //this.preventDefault(evt);
 
     let $current = $(evt.currentTarget);
     let $formStep = $current.parents(".form-step");
