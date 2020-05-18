@@ -1,46 +1,7 @@
 export default class Form_Events {
   constructor() {
     this.initPrevNextButtons();
-    //this.initChildrenData();            111111111111111111111111111
   }
-
-  // initChildrenData(){            11111111111111111111111111111111
-  //   let $childrenData = $("div.childrenData").clone(true);  // Children data to show later, depending on "select#childGroupSelectUnder18"
-  //   $("div.childrenData").remove();//Remove all existing children data inputs
-  //   let $selectedChildNumber;  // Children number selected, default = 0.
-  //   // Add event listener to get selected number of childrens.
-  //   $(document).ready(
-
-
-  //     function(){
-
-  //       $("select#childGroupSelectUnder18").change(
-  //         function(){
-
-  //           $selectedChildNumber = $(this).children("option:selected").val();
-  //           //alert('HAVE '+ $selectedChildNumber +" CHILDREN");
-
-  //           $("div.childrenData").remove();//Remove all existing children data inputs
-
-  //           for(let i=0;i<$selectedChildNumber;i++){
-
-  //             let auxChildrenData = $childrenData.clone(true);
-
-  //             auxChildrenData.attr('name','childrenData'+i).attr('id','childrenData'+i);
-
-  //             auxChildrenData.find('label.input-group-text').text('#'+(i+1));
-
-
-
-  //             auxChildrenData.appendTo("div.childrenDataContainer");
-  //             //$childrenData.clone(true).appendTo("div.childrenDataContainer");
-  //           }
-  //         }
-  //       );
-  //     }
-  //   );       
-
-  // }
 
   initPrevNextButtons() {
     const $prevButton = $(".js-previous");
@@ -54,37 +15,11 @@ export default class Form_Events {
     $finishButton.click(this.preventDefault);
   }
 
-  
-
   initSendFormEvent(callback) {
     let $sendForm = $(".js-sendForm");
     $sendForm.click(callback);
   }
-  /*
-    goToStep(step, direction = 'next') {
-        // 2) Simplifica esta función para que sean menos líneas.
-        let currentStep = step.replace(/^step\-/, '');
-        let goToStep = '.step-';
-        switch (currentStep) {
-            case '1':
-                goToStep += '2';
-                break;
-            case '2':
-                if ('prev' === direction) {
-                    goToStep += '1';
-                } else {
-                    goToStep += '3';
-                }
-                break;
-            case '3':
-                goToStep += '2';
-                break;
-            default:
-                break;
-        }
-        return goToStep;
-    }
-    */
+
   /**
    * 2) Simplifica esta función para que sean menos líneas.
    *
@@ -95,55 +30,18 @@ export default class Form_Events {
    * menor a 1.De igual forma está seteado el límite superior del valor.
    */
 
-/*
-  goToStep(step, direction = "next") {
-    let currentStep = +step.replace(/^step\-/, "");
-    let goToStep = ".step-";
-    let nextStep;
-    if (direction === "next") nextStep = currentStep + 1;
-    else nextStep = currentStep - 1;
-    goToStep += nextStep;
-    this.progressBar(Math.round(nextStep * 33.33));
-    return goToStep;
-  }
-  */
-
-
   goToStep(step, direction = "next") {
     const currentStep = +step.replace(/^step\-/, "");
     let goToStep = ".step-";
-    const nextStep = (direction == 'next') ? currentStep+1 : currentStep-1;
+    const nextStep = direction == "next" ? currentStep + 1 : currentStep - 1;
     this.progressBar(Math.round(nextStep * 33.33));
-    return goToStep+=nextStep;
+    return (goToStep += nextStep);
   }
-
-  /*
-    previousAction(evt) {
-        let $current = $(evt.currentTarget);
-        let $formStep = $current.parents('.form-step');
-        
-        $formStep.addClass('d-none');
-
-        let $prevStep = $(this.goToStep($formStep[0].classList[1], 'prev'));
-        $prevStep.removeClass('d-none');
-    }
-
-    nextAction(evt) {
-        // 3) ¿Se puede evitar repetir mismas líneas que en previousAction?
-        let $current = $(evt.currentTarget);
-        let $formStep = $current.parents('.form-step');
-        
-        $formStep.addClass('d-none');
-
-        let $nextStep = $(this.goToStep($formStep[0].classList[1]));
-        $nextStep.removeClass('d-none');
-    }
-    */
 
   // 3) ¿Se puede evitar repetir mismas líneas que en previousAction?
   // input : event , direction : dictates if the change is previous or next ('prev' or ''/'next' ).
 
-  preventDefault(event){
+  preventDefault(event) {
     event.preventDefault();
   }
 
