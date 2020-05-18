@@ -94,6 +94,8 @@ export default class Form_Events {
    * sólo muestra el boton 'next', asegurando que nextStep nunc puede ser
    * menor a 1.De igual forma está seteado el límite superior del valor.
    */
+
+/*
   goToStep(step, direction = "next") {
     let currentStep = +step.replace(/^step\-/, "");
     let goToStep = ".step-";
@@ -103,6 +105,16 @@ export default class Form_Events {
     goToStep += nextStep;
     this.progressBar(Math.round(nextStep * 33.33));
     return goToStep;
+  }
+  */
+
+
+  goToStep(step, direction = "next") {
+    const currentStep = +step.replace(/^step\-/, "");
+    let goToStep = ".step-";
+    const nextStep = (direction == 'next') ? currentStep+1 : currentStep-1;
+    this.progressBar(Math.round(nextStep * 33.33));
+    return goToStep+=nextStep;
   }
 
   /*
